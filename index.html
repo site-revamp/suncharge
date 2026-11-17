@@ -1,0 +1,1544 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#000000">
+  <meta name="description" content="Discover a clearer approach to electric vehicle charging with SunCharg. Explore charging applications for home, business and fleet environments.">
+  <title>SunCharg | A Clearer Direction for EV Charging</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --black: #000000;
+      --white: #FFFFFF;
+      --grey: #969696;
+      --ink: #111111;
+      --muted: #666666;
+      --soft: #F5F5F5;
+      --line: #DEDEDE;
+      --dark-line: #303030;
+      --font-heading: "Space Grotesk", sans-serif;
+      --font-body: "Inter", sans-serif;
+      --container: 1200px;
+      --radius: 4px;
+      --transition: 220ms ease;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    body {
+      background: var(--white);
+      color: var(--ink);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body.menu-open {
+      overflow: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    img, svg {
+      display: block;
+      max-width: 100%;
+    }
+
+    .container {
+      width: min(var(--container), calc(100% - 48px));
+      margin-inline: auto;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      width: 24px;
+      height: 1px;
+      background: var(--grey);
+      content: "";
+    }
+
+    .section-heading {
+      max-width: 760px;
+      margin-bottom: 48px;
+    }
+
+    .section-heading h2 {
+      margin-top: 18px;
+      font-family: var(--font-heading);
+      font-size: clamp(36px, 5vw, 58px);
+      font-weight: 600;
+      letter-spacing: -.055em;
+      line-height: 1.08;
+    }
+
+    .section-heading p {
+      max-width: 620px;
+      margin-top: 20px;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .button {
+      display: inline-flex;
+      min-height: 54px;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      padding: 0 23px;
+      border: 1px solid transparent;
+      border-radius: var(--radius);
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 700;
+      transition: background var(--transition), color var(--transition), border-color var(--transition), transform var(--transition);
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .button-dark {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    .button-dark:hover {
+      background: #292929;
+    }
+
+    .button-light {
+      border-color: rgba(255,255,255,.55);
+      background: transparent;
+      color: var(--white);
+    }
+
+    .button-light:hover {
+      background: var(--white);
+      color: var(--black);
+    }
+
+    .button-outline {
+      border-color: var(--line);
+      background: transparent;
+      color: var(--black);
+    }
+
+    .button-outline:hover {
+      border-color: var(--black);
+      background: var(--black);
+      color: var(--white);
+    }
+
+    .arrow {
+      display: inline-block;
+      font-size: 19px;
+      line-height: 1;
+      transition: transform var(--transition);
+    }
+
+    .button:hover .arrow,
+    .text-link:hover .arrow {
+      transform: translateX(4px);
+    }
+
+    /* Header */
+
+    .site-header {
+      position: sticky;
+      z-index: 100;
+      top: 0;
+      border-bottom: 1px solid rgba(0,0,0,.08);
+      background: rgba(255,255,255,.96);
+      backdrop-filter: blur(16px);
+    }
+
+    .header-inner {
+      display: flex;
+      min-height: 82px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      font-family: var(--font-heading);
+      font-size: 27px;
+      font-weight: 700;
+      letter-spacing: -.08em;
+    }
+
+    .brand-mark {
+      display: grid;
+      width: 31px;
+      height: 31px;
+      place-items: center;
+      border: 2px solid var(--black);
+      border-radius: 50%;
+    }
+
+    .brand-mark svg {
+      width: 17px;
+      height: 17px;
+    }
+
+    .brand-word {
+      display: inline-flex;
+      align-items: baseline;
+    }
+
+    .brand-word span {
+      color: var(--grey);
+    }
+
+    .desktop-nav {
+      display: flex;
+      align-items: center;
+      gap: 34px;
+    }
+
+    .desktop-nav a {
+      color: #444;
+      font-size: 13px;
+      font-weight: 600;
+      transition: color var(--transition);
+    }
+
+    .desktop-nav a:hover {
+      color: var(--grey);
+    }
+
+    .header-cta {
+      min-height: 45px;
+      padding-inline: 18px;
+      font-size: 12px;
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--line);
+      background: var(--white);
+      cursor: pointer;
+    }
+
+    .menu-toggle svg {
+      width: 21px;
+      height: 21px;
+    }
+
+    .mobile-menu {
+      display: none;
+    }
+
+    /* Hero */
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      min-height: 700px;
+      background: var(--black);
+      color: var(--white);
+    }
+
+    .hero::before {
+      position: absolute;
+      top: -220px;
+      right: -160px;
+      width: 720px;
+      height: 720px;
+      border: 1px solid rgba(255,255,255,.13);
+      border-radius: 50%;
+      content: "";
+    }
+
+    .hero::after {
+      position: absolute;
+      top: -80px;
+      right: -20px;
+      width: 440px;
+      height: 440px;
+      border: 1px solid rgba(150,150,150,.22);
+      border-radius: 50%;
+      content: "";
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      min-height: 700px;
+      grid-template-columns: 1.05fr .95fr;
+      align-items: center;
+      gap: 55px;
+      padding-block: 90px;
+    }
+
+    .hero-copy {
+      max-width: 680px;
+    }
+
+    .hero .eyebrow {
+      color: var(--grey);
+    }
+
+    .hero h1 {
+      margin-top: 27px;
+      font-family: var(--font-heading);
+      font-size: clamp(52px, 7vw, 88px);
+      font-weight: 600;
+      letter-spacing: -.075em;
+      line-height: .99;
+    }
+
+    .hero h1 span {
+      color: var(--grey);
+    }
+
+    .hero-copy > p {
+      max-width: 520px;
+      margin-top: 27px;
+      color: #C4C4C4;
+      font-size: 17px;
+      line-height: 1.8;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 13px;
+      margin-top: 36px;
+    }
+
+    .hero-note {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 45px;
+      color: #A9A9A9;
+      font-size: 12px;
+      letter-spacing: .03em;
+    }
+
+    .hero-note span {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--grey);
+    }
+
+    /* Abstract charger illustration */
+
+    .hero-visual {
+      position: relative;
+      display: grid;
+      min-height: 470px;
+      place-items: center;
+    }
+
+    .visual-orbit {
+      position: absolute;
+      width: min(100%, 460px);
+      aspect-ratio: 1;
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 50%;
+    }
+
+    .visual-orbit::before,
+    .visual-orbit::after {
+      position: absolute;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 50%;
+      content: "";
+    }
+
+    .visual-orbit::before {
+      inset: 45px;
+    }
+
+    .visual-orbit::after {
+      inset: 95px;
+    }
+
+    .charger-art {
+      position: relative;
+      z-index: 2;
+      width: 230px;
+      height: 360px;
+      filter: drop-shadow(25px 35px 35px rgba(0,0,0,.55));
+    }
+
+    .visual-label {
+      position: absolute;
+      z-index: 3;
+      right: 0;
+      bottom: 35px;
+      padding: 13px 16px;
+      border: 1px solid rgba(255,255,255,.2);
+      background: rgba(20,20,20,.8);
+      color: #C6C6C6;
+      font-size: 10px;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+
+    .visual-index {
+      position: absolute;
+      top: 28px;
+      right: 12px;
+      color: #777;
+      font-family: var(--font-heading);
+      font-size: 12px;
+      letter-spacing: .15em;
+    }
+
+    /* Intro strip */
+
+    .intro-strip {
+      border-bottom: 1px solid var(--line);
+      background: var(--white);
+    }
+
+    .intro-inner {
+      display: flex;
+      min-height: 110px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .intro-inner p {
+      max-width: 690px;
+      font-family: var(--font-heading);
+      font-size: clamp(19px, 2.5vw, 25px);
+      font-weight: 500;
+      letter-spacing: -.03em;
+      line-height: 1.35;
+    }
+
+    .intro-index {
+      color: var(--grey);
+      font-family: var(--font-heading);
+      font-size: 12px;
+      letter-spacing: .14em;
+      white-space: nowrap;
+    }
+
+    /* Context section */
+
+    .context-section {
+      padding-block: 120px;
+    }
+
+    .context-grid {
+      display: grid;
+      grid-template-columns: .85fr 1.15fr;
+      gap: 100px;
+      align-items: start;
+    }
+
+    .context-heading h2 {
+      margin-top: 20px;
+      font-family: var(--font-heading);
+      font-size: clamp(38px, 5vw, 62px);
+      font-weight: 600;
+      letter-spacing: -.06em;
+      line-height: 1.04;
+    }
+
+    .context-copy {
+      padding-top: 5px;
+    }
+
+    .context-copy p {
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.9;
+    }
+
+    .context-copy p + p {
+      margin-top: 20px;
+    }
+
+    .context-statement {
+      margin-top: 34px;
+      padding: 24px 0 0 25px;
+      border-left: 2px solid var(--grey);
+      color: var(--black);
+      font-family: var(--font-heading);
+      font-size: 21px;
+      font-weight: 500;
+      letter-spacing: -.025em;
+      line-height: 1.5;
+    }
+
+    /* Six icon cards */
+
+    .applications-section {
+      padding-block: 115px 125px;
+      background: var(--soft);
+    }
+
+    .applications-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1px;
+      border: 1px solid var(--line);
+      background: var(--line);
+    }
+
+    .application-card {
+      display: flex;
+      min-height: 280px;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 34px;
+      background: var(--white);
+      transition: background var(--transition);
+    }
+
+    .application-card:hover {
+      background: #FAFAFA;
+    }
+
+    .application-icon {
+      display: grid;
+      width: 56px;
+      height: 56px;
+      place-items: center;
+      border: 1px solid #D5D5D5;
+      border-radius: 50%;
+      color: var(--black);
+    }
+
+    .application-icon svg {
+      width: 26px;
+      height: 26px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .application-number {
+      margin-top: 28px;
+      color: var(--grey);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .14em;
+    }
+
+    .application-card h3 {
+      margin-top: 9px;
+      font-family: var(--font-heading);
+      font-size: 23px;
+      font-weight: 600;
+      letter-spacing: -.04em;
+      line-height: 1.2;
+    }
+
+    .application-card p {
+      max-width: 290px;
+      margin-top: 11px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    /* Approach */
+
+    .approach-section {
+      padding-block: 120px;
+    }
+
+    .approach-layout {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 100px;
+    }
+
+    .approach-lead {
+      position: sticky;
+      top: 130px;
+      align-self: start;
+    }
+
+    .approach-lead h2 {
+      margin-top: 20px;
+      font-family: var(--font-heading);
+      font-size: clamp(38px, 5vw, 60px);
+      font-weight: 600;
+      letter-spacing: -.06em;
+      line-height: 1.05;
+    }
+
+    .approach-lead p {
+      margin-top: 20px;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .approach-list {
+      border-top: 1px solid var(--line);
+    }
+
+    .approach-item {
+      display: grid;
+      grid-template-columns: 58px 1fr;
+      gap: 24px;
+      padding: 30px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .approach-item > span {
+      color: var(--grey);
+      font-family: var(--font-heading);
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .approach-item h3 {
+      font-family: var(--font-heading);
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: -.035em;
+    }
+
+    .approach-item p {
+      max-width: 500px;
+      margin-top: 9px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    /* CTA band */
+
+    .cta-band {
+      position: relative;
+      overflow: hidden;
+      padding-block: 90px;
+      background: var(--black);
+      color: var(--white);
+    }
+
+    .cta-band::after {
+      position: absolute;
+      top: -180px;
+      right: -90px;
+      width: 500px;
+      height: 500px;
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 50%;
+      content: "";
+    }
+
+    .cta-content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 50px;
+    }
+
+    .cta-copy {
+      max-width: 700px;
+    }
+
+    .cta-band .eyebrow {
+      color: var(--grey);
+    }
+
+    .cta-band h2 {
+      margin-top: 19px;
+      font-family: var(--font-heading);
+      font-size: clamp(40px, 5.5vw, 65px);
+      font-weight: 600;
+      letter-spacing: -.06em;
+      line-height: 1.04;
+    }
+
+    .cta-band p {
+      max-width: 570px;
+      margin-top: 19px;
+      color: #B8B8B8;
+      font-size: 16px;
+    }
+
+    .cta-band .button {
+      flex-shrink: 0;
+    }
+
+    /* Contact */
+
+    .contact-section {
+      padding-block: 115px;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 100px;
+    }
+
+    .contact-copy h2 {
+      margin-top: 20px;
+      font-family: var(--font-heading);
+      font-size: clamp(40px, 5vw, 60px);
+      font-weight: 600;
+      letter-spacing: -.06em;
+      line-height: 1.05;
+    }
+
+    .contact-copy > p {
+      max-width: 480px;
+      margin-top: 22px;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .contact-panel {
+      padding: 34px;
+      border: 1px solid var(--line);
+      background: #FAFAFA;
+    }
+
+    .contact-panel .panel-label {
+      color: var(--grey);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+
+    .contact-panel h3 {
+      margin-top: 16px;
+      font-family: var(--font-heading);
+      font-size: 27px;
+      font-weight: 600;
+      letter-spacing: -.04em;
+    }
+
+    .contact-panel p {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .contact-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin-top: 26px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      background: var(--white);
+      color: #555;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .contact-status span {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--grey);
+    }
+
+    /* Footer */
+
+    .site-footer {
+      padding-block: 35px;
+      border-top: 1px solid var(--line);
+      background: var(--white);
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+    }
+
+    .footer-brand {
+      font-family: var(--font-heading);
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -.07em;
+    }
+
+    .footer-brand span {
+      color: var(--grey);
+    }
+
+    .footer-note {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .footer-top {
+      color: var(--black);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    /* Mobile sticky actions */
+
+    .mobile-sticky {
+      display: none;
+    }
+
+    /* Reveal */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 650ms ease, transform 650ms ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    /* Responsive */
+
+    @media (max-width: 1000px) {
+      .desktop-nav {
+        gap: 20px;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr .8fr;
+        gap: 25px;
+      }
+
+      .context-grid,
+      .approach-layout,
+      .contact-grid {
+        gap: 55px;
+      }
+
+      .application-card {
+        padding: 27px;
+      }
+    }
+
+    @media (max-width: 760px) {
+      html {
+        scroll-padding-top: 75px;
+      }
+
+      .container {
+        width: min(100% - 36px, var(--container));
+      }
+
+      .header-inner {
+        min-height: 72px;
+      }
+
+      .desktop-nav,
+      .header-cta {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      .mobile-menu {
+        position: absolute;
+        top: 72px;
+        right: 0;
+        left: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        padding: 8px 18px 18px;
+        border-bottom: 1px solid var(--line);
+        background: var(--white);
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-8px);
+        transition: opacity var(--transition), transform var(--transition);
+      }
+
+      .mobile-menu.open {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+      }
+
+      .mobile-menu a {
+        padding: 14px 4px;
+        border-bottom: 1px solid var(--line);
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      .hero,
+      .hero-grid {
+        min-height: auto;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        padding-block: 82px 50px;
+      }
+
+      .hero h1 {
+        max-width: 600px;
+        font-size: clamp(52px, 13vw, 76px);
+      }
+
+      .hero-copy > p {
+        font-size: 15px;
+      }
+
+      .hero-visual {
+        min-height: 350px;
+      }
+
+      .visual-orbit {
+        width: 330px;
+      }
+
+      .charger-art {
+        width: 180px;
+        height: 280px;
+      }
+
+      .visual-label {
+        right: 4px;
+        bottom: 12px;
+      }
+
+      .visual-index {
+        top: 0;
+        right: 5px;
+      }
+
+      .intro-inner {
+        min-height: 100px;
+      }
+
+      .intro-index {
+        display: none;
+      }
+
+      .context-section,
+      .applications-section,
+      .approach-section,
+      .contact-section {
+        padding-block: 78px;
+      }
+
+      .context-grid,
+      .approach-layout,
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 38px;
+      }
+
+      .context-heading h2,
+      .approach-lead h2 {
+        max-width: 560px;
+      }
+
+      .approach-lead {
+        position: static;
+      }
+
+      .applications-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .application-card {
+        min-height: 270px;
+        padding: 23px;
+      }
+
+      .application-card h3 {
+        font-size: 20px;
+      }
+
+      .application-card p {
+        font-size: 13px;
+      }
+
+      .cta-band {
+        padding-block: 75px;
+      }
+
+      .cta-content {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 30px;
+      }
+
+      .contact-panel {
+        padding: 27px;
+      }
+
+      .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .mobile-sticky {
+        position: fixed;
+        z-index: 110;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 9px;
+        padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+        border-top: 1px solid var(--line);
+        background: rgba(255,255,255,.97);
+        backdrop-filter: blur(12px);
+      }
+
+      .mobile-sticky .button {
+        min-height: 47px;
+        padding-inline: 10px;
+        font-size: 12px;
+      }
+
+      body {
+        padding-bottom: 78px;
+      }
+    }
+
+    @media (max-width: 430px) {
+      .applications-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .application-card {
+        min-height: 235px;
+      }
+
+      .hero-actions {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .hero-actions .button {
+        width: 100%;
+      }
+
+      .section-heading {
+        margin-bottom: 34px;
+      }
+
+      .approach-item {
+        grid-template-columns: 35px 1fr;
+        gap: 15px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#home" aria-label="SunCharg homepage">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M13.5 2.5 5.8 13h5.6l-.9 8.5L18.2 11h-5.6l.9-8.5Z"
+              stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <span class="brand-word">sun<span>charg</span></span>
+      </a>
+
+      <nav class="desktop-nav" aria-label="Main navigation">
+        <a href="#overview">Overview</a>
+        <a href="#applications">Applications</a>
+        <a href="#approach">Our approach</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <a class="button button-dark header-cta" href="#contact">
+        Start a conversation <span class="arrow">↗</span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-label="Open navigation"
+        aria-expanded="false" aria-controls="mobileMenu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="1.7" stroke-linecap="round">
+          <path d="M4 7h16M4 12h16M4 17h16"/>
+        </svg>
+      </button>
+    </div>
+
+    <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
+      <a href="#overview">Overview</a>
+      <a href="#applications">Applications</a>
+      <a href="#approach">Our approach</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- Hero -->
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <span class="eyebrow">A new direction in electric mobility</span>
+          <h1>
+            Move forward.<br>
+            Charge <span>smarter.</span>
+          </h1>
+          <p>
+            Electric mobility is changing how we move. SunCharg is exploring
+            a clearer, more considered approach to EV charging, starting with
+            the needs of people, properties and businesses.
+          </p>
+
+          <div class="hero-actions">
+            <a class="button button-light" href="#applications">
+              Explore applications <span class="arrow">↗</span>
+            </a>
+            <a class="button button-outline" href="#overview"
+              style="border-color:#555;color:#fff">
+              Discover the direction
+            </a>
+          </div>
+
+          <div class="hero-note">
+            <span></span>
+            A considered starting point for electric mobility
+          </div>
+        </div>
+
+        <div class="hero-visual reveal" aria-label="Abstract EV charging concept illustration">
+          <div class="visual-orbit"></div>
+          <span class="visual-index">SC / 001</span>
+
+          <!-- Original decorative charger illustration -->
+          <svg class="charger-art" viewBox="0 0 250 390" role="img"
+            aria-label="Abstract electric vehicle charging unit illustration">
+            <defs>
+              <linearGradient id="chargerBody" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#F7F7F7"/>
+                <stop offset=".55" stop-color="#BDBDBD"/>
+                <stop offset="1" stop-color="#777777"/>
+              </linearGradient>
+              <linearGradient id="chargerSide" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0" stop-color="#777777"/>
+                <stop offset="1" stop-color="#333333"/>
+              </linearGradient>
+            </defs>
+
+            <path d="M166 102 C225 105 224 180 214 227 C208 256 221 275 230 289"
+              fill="none" stroke="#969696" stroke-width="8" stroke-linecap="round"/>
+            <path d="M230 289 C235 304 227 319 213 319"
+              fill="none" stroke="#D5D5D5" stroke-width="7" stroke-linecap="round"/>
+
+            <path d="M76 32 Q76 22 88 22 H160 Q173 22 173 35 V325
+              Q173 340 159 344 H89 Q76 340 76 327 Z"
+              fill="url(#chargerBody)"/>
+            <path d="M173 35 Q173 22 160 22 L184 37 V325
+              Q184 338 173 342 L159 344 Q173 338 173 325 Z"
+              fill="url(#chargerSide)"/>
+
+            <rect x="94" y="56" width="60" height="95" rx="8" fill="#151515"/>
+            <rect x="101" y="64" width="46" height="78" rx="4" fill="#292929"/>
+            <path d="M126 77 113 103h12l-4 25 17-31h-12l4-20Z"
+              fill="#D8D8D8"/>
+            <circle cx="124" cy="178" r="5" fill="#333333"/>
+            <path d="M98 207 H151" stroke="#777" stroke-width="2"/>
+            <path d="M98 218 H137" stroke="#999" stroke-width="2"/>
+            <path d="M98 229 H145" stroke="#999" stroke-width="2"/>
+            <path d="M96 278 H153" stroke="#777" stroke-width="1.5"/>
+            <path d="M96 289 H153" stroke="#777" stroke-width="1.5"/>
+            <path d="M97 344 V365 H153 V344" fill="#777777"/>
+            <path d="M91 365 H159" stroke="#E7E7E7" stroke-width="5" stroke-linecap="round"/>
+          </svg>
+
+          <div class="visual-label">Electric mobility / New possibilities</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Intro strip -->
+    <section class="intro-strip" aria-label="Brand statement">
+      <div class="container intro-inner">
+        <p>Better charging conversations begin with a clearer understanding of what you need.</p>
+        <span class="intro-index">SUNCHARG — 01</span>
+      </div>
+    </section>
+
+    <!-- Overview -->
+    <section class="context-section" id="overview">
+      <div class="container context-grid">
+        <div class="context-heading reveal">
+          <span class="eyebrow">The bigger picture</span>
+          <h2>Charging is more than plugging in.</h2>
+        </div>
+
+        <div class="context-copy reveal">
+          <p>
+            The move towards electric vehicles brings new questions about
+            where charging happens, how it fits into everyday routines and
+            what different environments may require.
+          </p>
+          <p>
+            A home driveway, a workplace car park and a vehicle fleet have
+            different considerations. Understanding the context is an
+            important first step before choosing a charging direction.
+          </p>
+          <div class="context-statement">
+            Start with the setting. Understand the requirement. Then explore
+            the right charging direction.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Applications: exactly six custom icons, two rows of three -->
+    <section class="applications-section" id="applications">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="eyebrow">Charging applications</span>
+          <h2>Different journeys.<br>Different charging needs.</h2>
+          <p>
+            These are common EV charging environments to consider when
+            exploring an electric mobility project.
+          </p>
+        </div>
+
+        <div class="applications-grid">
+
+          <article class="application-card reveal">
+            <div class="application-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M3 10.5 12 3l9 7.5"/>
+                <path d="M5.5 9.5V21h13V9.5"/>
+                <path d="M10 21v-6h4v6"/>
+                <path d="m13 10-3 4h3l-2 3"/>
+              </svg>
+            </div>
+            <span class="application-number">01 / RESIDENTIAL</span>
+            <h3>Home charging</h3>
+            <p>Explore the considerations around charging where everyday journeys begin and end.</p>
+          </article>
+
+          <article class="application-card reveal">
+            <div class="application-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="4" y="3" width="16" height="18" rx="1"/>
+                <path d="M8 7h2M14 7h2M8 11h2M14 11h2M10 21v-5h4v5"/>
+                <path d="M12 2v2"/>
+              </svg>
+            </div>
+            <span class="application-number">02 / WORKPLACE</span>
+            <h3>Workplace charging</h3>
+            <p>Consider how charging may fit into offices, employee parking and working routines.</p>
+          </article>
+
+          <article class="application-card reveal">
+            <div class="application-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M3 17V7h12v10H3Z"/>
+                <path d="M15 11h4l2 3v3h-6"/>
+                <circle cx="7" cy="18" r="2"/>
+                <circle cx="18" cy="18" r="2"/>
+                <path d="M6 10h5M8.5 7v6"/>
+              </svg>
+            </div>
+            <span class="application-number">03 / FLEET</span>
+            <h3>Fleet environments</h3>
+            <p>Think through the charging needs of vehicles that operate as part of a wider fleet.</p>
+          </article>
+
+          <article class="application-card reveal">
+            <div class="application-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M3 21h18"/>
+                <path d="M5 21V9l7-5 7 5v12"/>
+                <path d="M9 21v-6h6v6"/>
+                <path d="M8 10h2M14 10h2"/>
+                <path d="M12 7v3"/>
+              </svg>
+            </div>
+            <span class="application-number">04 / DESTINATION</span>
+            <h3>Retail & destinations</h3>
+            <p>Explore the role charging could play at places people visit, shop and spend time.</p>
+          </article>
+
+          <article class="application-card reveal">
+            <div class="application-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M3 21h18"/>
+                <path d="M5 21V8h14v13"/>
+                <path d="M8 8V4h8v4"/>
+                <path d="M8 12h2M14 12h2M8 16h2M14 16h2"/>
+                <path d="M11 21v-3h2v3"/>
+              </svg>
+            </div>
+            <span class="application-number">05 / PROPERTY</span>
+            <h3>Residential properties</h3>
+            <p>Consider shared charging requirements across apartments and multi-unit properties.</p>
+          </article>
+
+          <article class="application-card reveal">
+            <div class="application-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M3 18h18"/>
+                <path d="M5 18V9l7-5 7 5v9"/>
+                <path d="M9 18v-5h6v5"/>
+                <path d="M8 9h2M14 9h2"/>
+                <path d="M12 4V2"/>
+                <path d="m11 2 1 2 1-2"/>
+              </svg>
+            </div>
+            <span class="application-number">06 / PUBLIC ACCESS</span>
+            <h3>Public charging</h3>
+            <p>Explore the considerations involved in making charging accessible beyond private spaces.</p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Approach -->
+    <section class="approach-section" id="approach">
+      <div class="container approach-layout">
+        <div class="approach-lead reveal">
+          <span class="eyebrow">A considered approach</span>
+          <h2>Clarity before complexity.</h2>
+          <p>
+            The right charging decision starts with understanding the
+            situation rather than assuming every requirement is the same.
+          </p>
+        </div>
+
+        <div class="approach-list">
+          <article class="approach-item reveal">
+            <span>01</span>
+            <div>
+              <h3>Understand the environment</h3>
+              <p>
+                Identify where vehicles are parked, how they are used and
+                what the charging setting needs to accommodate.
+              </p>
+            </div>
+          </article>
+
+          <article class="approach-item reveal">
+            <span>02</span>
+            <div>
+              <h3>Define the requirement</h3>
+              <p>
+                Consider usage patterns, available space, electrical
+                capacity and the expectations of the people using the site.
+              </p>
+            </div>
+          </article>
+
+          <article class="approach-item reveal">
+            <span>03</span>
+            <div>
+              <h3>Explore suitable options</h3>
+              <p>
+                Compare relevant charging approaches and technical
+                requirements before deciding what may be appropriate.
+              </p>
+            </div>
+          </article>
+
+          <article class="approach-item reveal">
+            <span>04</span>
+            <div>
+              <h3>Plan the next step</h3>
+              <p>
+                Establish what information, technical review and
+                professional input would be needed to move forward.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-band">
+      <div class="container cta-content">
+        <div class="cta-copy reveal">
+          <span class="eyebrow">Start with the right questions</span>
+          <h2>Where could smarter charging take you?</h2>
+          <p>
+            Every charging project begins with a different requirement.
+            Take the first step by defining the environment and the outcome
+            you want to explore.
+          </p>
+        </div>
+        <a class="button button-light reveal" href="#contact">
+          Explore the next step <span class="arrow">↗</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact-section" id="contact">
+      <div class="container contact-grid">
+        <div class="contact-copy reveal">
+          <span class="eyebrow">Get in touch</span>
+          <h2>Let's start a conversation.</h2>
+          <p>
+            Have a question or an EV charging requirement to explore?
+            SunCharg's contact details can be added here once the official
+            communication channels have been confirmed.
+          </p>
+        </div>
+
+        <div class="contact-panel reveal">
+          <span class="panel-label">Contact information</span>
+          <h3>Connect with SunCharg</h3>
+          <p>
+            Official email, telephone, business address and enquiry
+            destination are awaiting confirmation. Add verified details
+            here before the website goes live.
+          </p>
+          <div class="contact-status">
+            <span></span>
+            Official contact channel to be confirmed
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <a class="footer-brand" href="#home">sun<span>charg</span></a>
+      <p class="footer-note">Electric mobility. A clearer direction.</p>
+      <a class="footer-top" href="#home">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <!-- Mobile sticky bar: exactly two actions -->
+  <div class="mobile-sticky" aria-label="Quick navigation">
+    <a class="button button-outline" href="#applications">Explore applications</a>
+    <a class="button button-dark" href="#contact">Get in touch <span class="arrow">↗</span></a>
+  </div>
+
+  <script>
+    // Mobile navigation
+    const menuToggle = document.querySelector(".menu-toggle");
+    const mobileMenu = document.querySelector(".mobile-menu");
+
+    function closeMenu() {
+      mobileMenu.classList.remove("open");
+      document.body.classList.remove("menu-open");
+      menuToggle.setAttribute("aria-expanded", "false");
+      menuToggle.setAttribute("aria-label", "Open navigation");
+    }
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = mobileMenu.classList.toggle("open");
+      document.body.classList.toggle("menu-open", isOpen);
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.setAttribute(
+        "aria-label",
+        isOpen ? "Close navigation" : "Open navigation"
+      );
+    });
+
+    mobileMenu.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", closeMenu);
+    });
+
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape") closeMenu();
+    });
+
+    // Scroll reveal, with a reduced-motion fallback
+    const revealItems = document.querySelectorAll(".reveal");
+
+    if ("IntersectionObserver" in window &&
+        !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+
+      revealItems.forEach(item => revealObserver.observe(item));
+    } else {
+      revealItems.forEach(item => item.classList.add("visible"));
+    }
+  </script>
+
+</body>
+</html>
